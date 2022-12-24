@@ -47,9 +47,8 @@
     "check-env": "`# This is just a test script to print out npm parsed parameters` node -e 'console.log(process.env)' | grep npm",
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
     "install:prod": "npm ci",
-    "prune:prod": "npm prune --production",
     "preversion": "npm run clean && npm run install:prod && npm run build-one-file-from-js && npm run test",
-    "prepublishOnly": "npm run prune:prod",
+    "prepublishOnly": "npm prune --production",
     "interactive-publish": "np"
   },
   "repository": {
