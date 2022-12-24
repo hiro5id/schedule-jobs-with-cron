@@ -1,10 +1,13 @@
 import { expect } from 'chai';
-import {IsPositiveInteger} from "../src/is-positive-integer";
-import {parseCronParts} from "../src/parse-cron-parts";
-import {CronScheduleGenerator} from "../src/cron-schedule-generator";
-import {CronPartUnitEnum} from "../src/cron-part-unit.enum";
-import {parseCronPart} from "../src/parse-cron-part";
+import { IsPositiveInteger } from '../src/is-positive-integer';
+import { parseCronParts } from '../src/parse-cron-parts';
+import { CronScheduleGenerator } from '../src/cron-schedule-generator';
+import { CronPartUnitEnum } from '../src/cron-part-unit.enum';
+import { parseCronPart } from '../src/parse-cron-part';
 
+function f(input: Date) {
+  return input.toLocaleString('en-US', { timeStyle: 'full', dateStyle: 'full' });
+}
 describe('schedule-jobs-with-cron', function () {
   it('generates schedule for 5 0 * 8 *', function () {
     const startDate = new Date('2022-12-23T19:00:00.000-04:00');
@@ -12,35 +15,21 @@ describe('schedule-jobs-with-cron', function () {
     const cronScheduleGenerator = new CronScheduleGenerator('5 0 * 8 *', startDate);
 
     expect(cronScheduleGenerator.englishDescriptionOfSchedule).eql('At 00:05 in August');
-
-    const trigger1 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger1).eql('Tue Aug 01 2023 00:05:00 GMT-0400 (Eastern Daylight Time)');
-
-    const trigger2 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger2).eql('Wed Aug 02 2023 00:05:00 GMT-0400 (Eastern Daylight Time)');
-
-    const trigger3 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger3).eql('Thu Aug 03 2023 00:05:00 GMT-0400 (Eastern Daylight Time)');
-
-    const trigger4 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger4).eql('Fri Aug 04 2023 00:05:00 GMT-0400 (Eastern Daylight Time)');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Tuesday, August 1, 2023 at 12:05:00 AM Eastern Daylight Time');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Wednesday, August 2, 2023 at 12:05:00 AM Eastern Daylight Time');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Thursday, August 3, 2023 at 12:05:00 AM Eastern Daylight Time');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Friday, August 4, 2023 at 12:05:00 AM Eastern Daylight Time');
   });
 
   it('generates schedule for 15 14/4 1 5,4,2 */2', function () {
     const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
 
     const cronScheduleGenerator = new CronScheduleGenerator('15 14/4 1 5,4,2 */2', startDate);
-    const trigger1 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger1).eql('Wed Feb 01 2023 14:15:00 GMT-0500 (Eastern Standard Time)');
 
-    const trigger2 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger2).eql('Wed Feb 01 2023 18:15:00 GMT-0500 (Eastern Standard Time)');
-
-    const trigger3 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger3).eql('Wed Feb 01 2023 22:15:00 GMT-0500 (Eastern Standard Time)');
-
-    const trigger4 = cronScheduleGenerator.GetNextScheduledDate().toString();
-    expect(trigger4).eql('Mon May 01 2023 14:15:00 GMT-0400 (Eastern Daylight Time)');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Wednesday, February 1, 2023 at 2:15:00 PM Eastern Standard Time');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Wednesday, February 1, 2023 at 6:15:00 PM Eastern Standard Time');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Wednesday, February 1, 2023 at 10:15:00 PM Eastern Standard Time');
+    expect(f(cronScheduleGenerator.GetNextScheduledDate())).eql('Monday, May 1, 2023 at 2:15:00 PM Eastern Daylight Time');
   });
 
   it('throws exception when using invalid expression2', function () {
