@@ -48,7 +48,8 @@
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
     "install:prod": "npm ci",
     "prune:prod": "npm prune --production",
-    "prepublishOnly": "npm run clean && npm run install:prod && npm run build-one-file-from-js && npm run test && npm run prune:prod",
+    "preversion": "npm run clean && npm run install:prod && npm run build-one-file-from-js && npm run test && npm run prune:prod",
+    "prepublishOnly": "",
     "interactive-publish": "np"
   },
   "repository": {
