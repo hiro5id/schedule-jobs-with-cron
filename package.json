@@ -1,7 +1,7 @@
 {
   "name": "schedule-jobs-with-cron",
   "author": "Robert Sebestyen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Schedule jobs with cron specifications",
   "private": false,
   "directories": {
@@ -48,8 +48,8 @@
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
     "install:prod": "npm ci",
     "prune:prod": "npm prune --production",
-    "preversion": "npm run clean && npm run install:prod && npm run build-one-file-from-js && npm run test && npm run prune:prod",
-    "prepublishOnly": "",
+    "preversion": "npm run clean && npm run install:prod && npm run build-one-file-from-js && npm run test",
+    "prepublishOnly": "npm run prune:prod",
     "interactive-publish": "np"
   },
   "repository": {
