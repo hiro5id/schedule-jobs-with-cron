@@ -1,0 +1,85 @@
+{
+  "name": "schedule-jobs-with-cron",
+  "author": "Robert Sebestyen",
+  "version": "1.0.0",
+  "description": "Schedule jobs with cron specifications",
+  "private": false,
+  "directories": {
+    "doc": "docs"
+  },
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "schedule",
+    "cron",
+    "chron",
+    "scheduler"
+  ],
+  "scripts": {
+    "eslint:git-changed": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\\\.ts | grep -v json`; if [ \"$LIST\" ]; then eslint --ignore-path .eslintignore $LIST; fi",
+    "eslint": "eslint --cache --ignore-path .eslintignore . --ext .ts",
+    "prettier": "prettier --loglevel error --ignore-path .prettierignore \"**/(src|test)/**/*.ts\" -c",
+    "prettier:check:all": "npm run prettier -- --loglevel log",
+    "prettier:fix": "npm run prettier -- --write",
+    "prettier:fix:git-changed": "LIST=`git diff-index --name-only --diff-filter=d HEAD | egrep -i '(ts|json|md|js|html|htm)$'`; if [ -z \"$LIST\" ]; then exit 0; fi; echo \"${LIST}\" | while IFS= read -r line; do echo \"prettier ----> $line\" && prettier --loglevel debug --ignore-path .prettierignore \"$line\" --write && git add \"$line\"; done;",
+    "check-formatting-and-linting": "npm run prettier && npm run eslint",
+    "prebuild": "",
+    "build": "rimraf ./dist && tsc",
+    "make-type-definitions": "npm-dts generate -e ./src/index.ts -o ./dist/index.d.ts",
+    "build-one-file-from-js": "npm run build && esbuild ./dist/src/index.js --bundle --platform=node --packages=external --target=node18.12.1 --outfile=./dist/index.js --allow-overwrite && rimraf ./dist/src ./dist/test && npm run make-type-definitions",
+    "build-one-file-from-js-and-mangle": "npm run build-one-file-from-js && terser ./dist/index.js --compress --mangle --output ./dist/index.js",
+    "test": "jest --silent",
+    "test:no-install": "npx --no-install jest",
+    "clean": "rimraf ./dist ./node_modules",
+    "start": "ts-node ./src/main.ts",
+    "start-ts": "npm run prestart && ts-node src/main.ts",
+    "prestart": "",
+    "pretest": "",
+    "prepare": "`# This installs git pre commit hook` husky install",
+    "check-env": "`# This is just a test script to print out npm parsed parameters` node -e 'console.log(process.env)' | grep npm",
+    "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "//#### dependencies-documentation": {
+    "building types with esbuild": "https://souporserious.com/bundling-typescript-with-esbuild-for-npm/",
+    "@typescript-eslint/eslint-plugin": "Needed for eslint to provide lint rules for typescript",
+    "@typescript-eslint/parser": "This is a dependency of eslint-plugin-unicorn",
+    "eslint-plugin-unicorn": "adds ability to add extra rules in .eslintrc.js for typescript linting",
+    "prettier": "code formatting",
+    "husky": "handler for pre-commit-hooks"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "chai": "^4.3.7",
+    "esbuild": "^0.16.10",
+    "eslint": "^8.30.0",
+    "eslint-plugin-unicorn": "^45.0.2",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "npm-dts": "^1.3.12",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "terser": "^5.16.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
+  },
+  "peerDependencies": {}
+}
