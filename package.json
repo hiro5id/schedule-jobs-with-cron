@@ -38,13 +38,17 @@
     "test": "jest --silent",
     "test:no-install": "npx --no-install jest",
     "clean": "rimraf ./dist ./node_modules",
+    "audit": "npm audit --production",
     "start": "ts-node ./src/main.ts",
     "start-ts": "npm run prestart && ts-node src/main.ts",
     "prestart": "",
     "pretest": "",
     "prepare": "`# This installs git pre commit hook` husky install",
     "check-env": "`# This is just a test script to print out npm parsed parameters` node -e 'console.log(process.env)' | grep npm",
-    "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install"
+    "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
+    "install:prod": "npm ci",
+    "prepublishOnly": "npm run clean && npm run install:prod && npm run build-one-file-from-js && npm run test && npm run prune:prod",
+    "interactive-publish": "np"
   },
   "repository": {
     "type": "git",
@@ -70,6 +74,7 @@
     "eslint-plugin-unicorn": "^45.0.2",
     "husky": "^8.0.2",
     "jest": "^29.3.1",
+    "np": "^7.6.2",
     "npm-dts": "^1.3.12",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
@@ -80,6 +85,5 @@
   },
   "dependencies": {
     "chalk": "^5.2.0"
-  },
-  "peerDependencies": {}
+  }
 }
