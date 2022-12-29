@@ -9,7 +9,7 @@ import { parseCronPart } from '../src/parse-cron-part';
 function f(input: Date) {
   return input.toLocaleString('en-US', { timeStyle: 'full', dateStyle: 'full' });
 }
-describe('schedule-jobs-with-cron', function () {
+describe('cron parsing tests', function () {
   it('generates schedule for 5 0 * 8 *', function () {
     const startDate = new Date('2022-12-23T19:00:00.000-04:00');
 
