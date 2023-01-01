@@ -1,10 +1,5 @@
 import { CronScheduleGenerator } from './cron-schedule-generator';
-
-export interface IJobOptions {
-  continueOnError?: boolean;
-  endDate?: Date | null;
-  startDate?: Date | null;
-}
+import { IJobOptions } from './job-options.interface';
 
 export class Job {
   constructor(private readonly action: (triggerTime: Date) => Promise<void>, cronSchedule: string, jobOptions: IJobOptions = <any>{}) {
