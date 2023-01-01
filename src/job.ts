@@ -3,13 +3,7 @@ import { IJobOptions } from './job-options.interface';
 
 export class Job {
   constructor(private readonly action: (triggerTime: Date) => Promise<void>, cronSchedule: string, jobOptions: IJobOptions = <any>{}) {
-    const defaultOptions: IJobOptions = {
-      endDate: null,
-      continueOnError: false,
-      startDate: this.getNow(),
-    };
-
-    this._jobOptions = { ...defaultOptions, ...jobOptions };
+    this._jobOptions = { ...this._defaultOptions, ...jobOptions };
 
     const now = this.getNow();
     if (this._jobOptions.startDate!.getTime() - now.getTime() < 0) {
@@ -32,6 +26,12 @@ export class Job {
 
     this.scheduleForNextIteration();
   }
+
+  private _defaultOptions: IJobOptions = {
+    endDate: null,
+    continueOnError: false,
+    startDate: this.getNow(),
+  };
 
   private readonly _jobOptions: IJobOptions;
   private readonly _jobRunnerPromise: Promise<void>;
