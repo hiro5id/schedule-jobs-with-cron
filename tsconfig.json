@@ -20,7 +20,7 @@
     "moduleResolution": "node",
     "target": "ES2020",
     "outDir": "dist",
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": true
   },
   "include": ["src", "test"],

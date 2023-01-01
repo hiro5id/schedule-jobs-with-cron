@@ -18,13 +18,12 @@ export class CronScheduleGenerator {
   private readonly _parsedCron: IAllProcessedParts;
   private _triggeredDate: Date;
 
-  public GetNextScheduledDate(): Date {
+  public getNextScheduledDate(): Date {
     let now = this._triggeredDate;
 
     for (let i = 0; i < 900100; i++) {
       now.setMinutes(now.getMinutes() + 1);
-      // working around month bug
-      now = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), 0, 0);
+      //now = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), 0, 0);
 
       //Check if it matches a trigger
       if (
