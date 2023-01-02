@@ -10,18 +10,13 @@ describe('chron scheduler', function () {
   });
 
   it('schedules job', async function () {
-    let dateMockCallCount = 0;
+    let mockDate = `2010-01-01T00:00:00.000Z`;
     const getNowFunc = jest.spyOn(Job.prototype as any, 'getNow');
     getNowFunc.mockImplementation(() => {
-      dateMockCallCount += 1;
-      if (dateMockCallCount > 4) {
-        return new Date(`2010-01-01T00:01:00.000Z`);
-      } else {
-        return new Date(`2010-01-01T00:00:00.000Z`);
-      }
+      return new Date(mockDate);
     });
 
-    const endTime = new Date(`2010-01-01T00:30:00.000Z`);
+    const endTime = new Date(`2010-01-01T00:04:00.000Z`);
     // jest
     //   .spyOn(global.Date, 'now')
     //   .mockImplementationOnce(() => endTime.valueOf());
@@ -30,7 +25,7 @@ describe('chron scheduler', function () {
     let triggerOneReached = false;
     let triggerTwoReached = false;
 
-    const jobFunction: (triggerTime: Date) => Promise<void> = async (triggerTime: Date) => {
+    const jobWorkerFunction: (triggerTime: Date) => Promise<void> = async (triggerTime: Date) => {
       console.log(`Hello this is a test ${triggerTime}`);
       if (!triggerOneReached) {
         triggerOneReached = true;
@@ -39,15 +34,21 @@ describe('chron scheduler', function () {
         triggerTwoReached = true;
       }
     };
-    const job = new Job(jobFunction, '*/1 * * * *', { endDate: endTime, startDate: new Date(`2010-01-01T00:00:00.000Z`), continueOnError: false });
 
-    jest.setSystemTime(new Date(`2010-01-01T00:01:00.000Z`));
-    //jest.runAllTimers()
+    let afterSettingTimeoutCallbackCount = 0;
 
-    jest.runAllTimers();
-    //jest.advanceTimersByTime(60000);
-    // jest.advanceTimersByTime(25822);
-    // jest.advanceTimersByTime(25822);
+    const job = new Job(jobWorkerFunction, '*/1 * * * *', {
+      endDate: endTime,
+      startDate: new Date(mockDate),
+      continueOnError: false,
+      afterSettingTimeoutCallback: () => {
+        jest.advanceTimersByTime(60000);
+      },
+      beforeExecutingWorkerCallback: () => {
+        afterSettingTimeoutCallbackCount += 1;
+        mockDate = `2010-01-01T00:0${afterSettingTimeoutCallbackCount}:00.000Z`;
+      },
+    });
 
     try {
       await job.getPromise();

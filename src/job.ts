@@ -2,7 +2,7 @@ import { CronScheduleGenerator } from './cron-schedule-generator';
 import { IJobOptions } from './job-options.interface';
 
 export class Job {
-  constructor(private readonly action: (triggerTime: Date) => Promise<void>, cronSchedule: string, jobOptions: IJobOptions = <any>{}) {
+  constructor(private readonly jobWorkerFunction: (triggerTime: Date) => Promise<void>, cronSchedule: string, jobOptions: IJobOptions = <any>{}) {
     this._jobOptions = { ...this._defaultOptions, ...jobOptions };
 
     const now = this.getNow();
@@ -31,6 +31,8 @@ export class Job {
     endDate: null,
     continueOnError: false,
     startDate: this.getNow(),
+    afterSettingTimeoutCallback: null,
+    beforeExecutingWorkerCallback: null,
   };
 
   private readonly _jobOptions: IJobOptions;
@@ -52,6 +54,7 @@ export class Job {
   private scheduleForNextIteration() {
     const nextTrigger = this._scheduleGenerator.getNextScheduledDate();
     if (this._jobOptions.endDate && nextTrigger >= this._jobOptions.endDate) {
+      console.log(`End date reached for job, resolving job Promise`);
       this._resolveJobRunner();
       return;
     }
@@ -61,11 +64,14 @@ export class Job {
     console.log(`Scheduling for the next ${milisecondsToNextTrigger} (${nextTrigger}) from now ${now}`);
     this._jobPromsie = new Promise<void>((resolve, reject) => {
       setTimeout(() => {
+        if (this._jobOptions.beforeExecutingWorkerCallback) {
+          this._jobOptions.beforeExecutingWorkerCallback();
+        }
         const now = this.getNow();
         try {
-          const actionResult = this.action(now);
+          const actionResult = this.jobWorkerFunction(now);
 
-          if (this.action.constructor.name === 'AsyncFunction' || (typeof this.action === 'function' && this.isPromise(actionResult))) {
+          if (this.jobWorkerFunction.constructor.name === 'AsyncFunction' || (typeof this.jobWorkerFunction === 'function' && this.isPromise(actionResult))) {
             // function returns promise
             actionResult.then(() => resolve()).catch(err => reject(err));
           } else {
@@ -75,6 +81,10 @@ export class Job {
           reject(err);
         }
       }, milisecondsToNextTrigger);
+
+      if (this._jobOptions.afterSettingTimeoutCallback) {
+        this._jobOptions.afterSettingTimeoutCallback();
+      }
     });
 
     this._jobPromsie
