@@ -7,6 +7,7 @@ describe('chron scheduler', function () {
   });
   afterAll(() => {
     jest.useRealTimers();
+    jest.clearAllMocks();
   });
 
   it('schedules job', async function () {
