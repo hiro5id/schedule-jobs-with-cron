@@ -1,4 +1,4 @@
-import { Job } from '../src/job';
+import { Job, JobWorkerFunction, LoggerFunction } from '../src/job';
 import { expect } from 'chai';
 
 describe('chron scheduler', function () {
@@ -18,16 +18,12 @@ describe('chron scheduler', function () {
     });
 
     const endTime = new Date(`2010-01-01T00:04:00.000Z`);
-    // jest
-    //   .spyOn(global.Date, 'now')
-    //   .mockImplementationOnce(() => endTime.valueOf());
-    // jest.useFakeTimers();
 
     let triggerOneReached = false;
     let triggerTwoReached = false;
 
-    const jobWorkerFunction: (triggerTime: Date) => Promise<void> = async (triggerTime: Date) => {
-      console.log(`Hello this is a test ${triggerTime}`);
+    const jobWorkerFunction: JobWorkerFunction = async (triggerTime: Date, log: LoggerFunction) => {
+      log('info', `Hello this is a test ${triggerTime}`);
       if (!triggerOneReached) {
         triggerOneReached = true;
       }
@@ -38,7 +34,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job(jobWorkerFunction, '*/1 * * * *', {
+    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
