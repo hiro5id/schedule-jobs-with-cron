@@ -164,7 +164,6 @@ export class Job {
 
         if (this._jobOptions.continueOnError) {
           this.log('err', errMessage);
-          console.error(errMessage);
           return;
         } else {
           this._rejectJobRunner(errMessage);
