@@ -28,15 +28,12 @@ export class Job {
     const now = this.getNow();
     if (this._jobOptions.startDate!.getTime() - now.getTime() < 0) {
       this.throwError('Start date cannot be in the past');
-      return;
     }
     if (this._jobOptions.endDate && this._jobOptions.endDate.getTime() - now.getTime() < 0) {
       this.throwError('End date cannot be in the past');
-      return;
     }
     if (this._jobOptions.endDate && this._jobOptions.startDate && this._jobOptions.endDate.getTime() - this._jobOptions.startDate.getTime() <= 0) {
       this.throwError('End date cannot be before start date');
-      return;
     }
 
     this._scheduleGenerator = new CronScheduleGenerator(cronSchedule, this._jobOptions.startDate!);
