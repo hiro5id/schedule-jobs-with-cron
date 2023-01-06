@@ -40,6 +40,13 @@ describe('cron parsing tests', function () {
     }).to.throw('unable to parse day of month from spec: [* * / * *]');
   });
 
+  it('throws exception when using invalid expression3', function () {
+    const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
+    expect(() => {
+      new CronScheduleGenerator('a b c d * *', startDate);
+    }).to.throw('unable to parse cron spec provided: [a b c d * *]');
+  });
+
   it('throws exception when using invalid expression for minute', function () {
     const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
     expect(() => {
