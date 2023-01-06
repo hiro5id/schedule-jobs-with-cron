@@ -7,7 +7,7 @@ import { IJobOptions } from './job-options.interface';
  * logs need to be generated from within the function.  The job's logger function will be used in this case so that
  * the job name is automatically attached to the message.
  */
-export type JobWorkerFunction = (triggerTime: Date, log: LoggerFunction) => Promise<void>;
+export type JobWorkerFunction = (triggerTime: Date, log: LoggerFunction) => Promise<void> | void;
 
 /**
  * A logger function used throughout the job to keep things consistent
@@ -131,16 +131,20 @@ export class Job {
           const logger = this.log.bind(this);
           const actionResult = this.jobWorkerFunction(now, logger);
 
-          if (this.jobWorkerFunction.constructor.name === 'AsyncFunction' || (typeof this.jobWorkerFunction === 'function' && this.isPromise(actionResult))) {
+          if (
+            (actionResult != undefined && this.jobWorkerFunction.constructor.name === 'AsyncFunction') ||
+            (typeof this.jobWorkerFunction === 'function' && this.isPromise(actionResult))
+          ) {
             // function returns promise
-            actionResult
-              .then(() => resolveJobIteration())
+            (actionResult as Promise<void>)
+              .then(() => {
+                resolveJobIteration();
+              })
               .catch(err => {
                 this.log('err', `Failed to execute, following error was received: ${err}`);
                 rejectJobIteration(`${this.formattedJobName}${err}`);
               });
           } else {
-            this.log('info', 'Finished successfully....');
             resolveJobIteration();
           }
         } catch (err) {
@@ -156,11 +160,11 @@ export class Job {
 
     this._jobIterationPromise
       .then(() => {
-        this.log('info', `Scheduled trigger finished.`);
+        this.log('info', `Scheduled trigger finished!`);
         this.scheduleForNextIteration();
       })
       .catch(err => {
-        const errMessage = `Error running job at iteration ${nextTrigger}: ${err}`;
+        const errMessage = `${this.formattedJobName}Error running job at iteration ${nextTrigger}: ${err}`;
 
         if (this._jobOptions.continueOnError) {
           this.log('err', errMessage);
