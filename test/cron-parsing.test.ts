@@ -40,11 +40,39 @@ describe('cron parsing tests', function () {
     }).to.throw('unable to parse day of month from spec: [* * / * *]');
   });
 
-  it('throws exception when using invalid expression', function () {
+  it('throws exception when using invalid expression for minute', function () {
     const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
     expect(() => {
       new CronScheduleGenerator('a b c d e', startDate);
     }).to.throw('unable to parse minute from spec: [a b c d e]');
+  });
+
+  it('throws exception when using invalid expression for hour', function () {
+    const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
+    expect(() => {
+      new CronScheduleGenerator('* b c d e', startDate);
+    }).to.throw('unable to parse hour from spec: [* b c d e]');
+  });
+
+  it('throws exception when using invalid expression for day', function () {
+    const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
+    expect(() => {
+      new CronScheduleGenerator('* * c d e', startDate);
+    }).to.throw('unable to parse day of month from spec: [* * c d e]');
+  });
+
+  it('throws exception when using invalid expression for month', function () {
+    const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
+    expect(() => {
+      new CronScheduleGenerator('* * * d e', startDate);
+    }).to.throw('unable to parse month from spec: [* * * d e]');
+  });
+
+  it('throws exception when using invalid expression for day of week', function () {
+    const startDate = new Date(2022, 11, 23, 19, 0, 0, 0);
+    expect(() => {
+      new CronScheduleGenerator('* * * * e', startDate);
+    }).to.throw('unable to parse day of week from spec: [* * * * e]');
   });
 
   it('parse cron 0 22 4/3 2,3,1-5 1-5', function () {
