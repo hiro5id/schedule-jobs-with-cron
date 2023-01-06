@@ -164,10 +164,11 @@ export class Job {
         this.scheduleForNextIteration();
       })
       .catch(err => {
+        this.log('info', `Scheduled did not finish!`);
         const errMessage = `${this.formattedJobName}Error running job at iteration ${nextTrigger}: ${err}`;
 
         if (this._jobOptions.continueOnError) {
-          this.log('err', errMessage);
+          this.scheduleForNextIteration();
           return;
         } else {
           this._rejectJobRunner(errMessage);
