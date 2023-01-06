@@ -35,7 +35,7 @@ export class Job {
       return;
     }
     if (this._jobOptions.endDate && this._jobOptions.startDate && this._jobOptions.endDate.getTime() - this._jobOptions.startDate.getTime() <= 0) {
-      this.throwError('Start date must be greater than End Date');
+      this.throwError('End date cannot be before start date');
       return;
     }
 

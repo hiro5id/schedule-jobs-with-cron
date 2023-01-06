@@ -607,4 +607,62 @@ describe('chron scheduler', function () {
     ]);
     expect(consoleErrors).eql(['Job [testjob123]: Failed to execute, following error was received: error from first trigger']);
   });
+
+  it('throws when start date is in the past', () => {
+    let mockDate = `2010-01-01T00:04:00.000Z`;
+    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    jobGetNowMock.mockImplementation(() => {
+      return new Date(mockDate);
+    });
+
+    const endTime = new Date(`2010-01-01T00:00:00.000Z`);
+
+    let caughtError: Error | null = null;
+    try {
+      new Job('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(mockDate), endDate: endTime });
+    } catch (err) {
+      caughtError = err as Error;
+    }
+
+    expect(caughtError?.message).eql('Job [a badly declared job]: End date cannot be in the past');
+  });
+
+  it('throws when start date is in the past', () => {
+    let mockDate = `2010-01-01T00:04:00.000Z`;
+    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    jobGetNowMock.mockImplementation(() => {
+      return new Date(mockDate);
+    });
+
+    const startDate = new Date(`2010-01-01T00:00:00.000Z`);
+
+    let caughtError: Error | null = null;
+    try {
+      new Job('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(startDate) });
+    } catch (err) {
+      caughtError = err as Error;
+    }
+
+    expect(caughtError?.message).eql('Job [a badly declared job]: Start date cannot be in the past');
+  });
+
+  it('throws when start date is in the past', () => {
+    let mockDate = `2010-01-01T00:00:00.000Z`;
+    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    jobGetNowMock.mockImplementation(() => {
+      return new Date(mockDate);
+    });
+
+    const startDate = new Date(`2010-01-01T00:05:00.000Z`);
+    const endTime = new Date(`2010-01-01T00:00:00.000Z`);
+
+    let caughtError: Error | null = null;
+    try {
+      new Job('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(startDate), endDate: endTime });
+    } catch (err) {
+      caughtError = err as Error;
+    }
+
+    expect(caughtError?.message).eql('Job [a badly declared job]: End date cannot be before start date');
+  });
 });
