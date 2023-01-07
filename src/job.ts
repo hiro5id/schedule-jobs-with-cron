@@ -17,7 +17,7 @@ export type LoggerFunction = (type: 'err' | 'info', message: string) => void;
 export class Job {
   /**
    *
-   * @param jobName - Give the job a unique name that can be identified*
+   * @param jobName - Give the job a unique name that can be identified
    * @param jobWorkerFunction - Function that does the actual work any time the job is triggered
    * @param cronSchedule - A cron spec schedule.  Please see https://crontab.guru for assistance in creating a crontab schedule
    * @param jobOptions - Optional arguments to customize the behaviour

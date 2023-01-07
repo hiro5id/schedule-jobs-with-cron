@@ -23,7 +23,7 @@
     "scheduler"
   ],
   "scripts": {
-    "eslint:git-changed": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\\\.ts | grep -v json`; if [ \"$LIST\" ]; then eslint --ignore-path .eslintignore $LIST; fi",
+    "eslint:git-changed": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\\\\\.ts | grep -v json`; if [ \"$LIST\" ]; then eslint --ignore-path .eslintignore $LIST; fi",
     "eslint": "eslint --cache --ignore-path .eslintignore . --ext .ts",
     "prettier": "prettier --loglevel error --ignore-path .prettierignore \"**/(src|test)/**/*.ts\" -c",
     "prettier:check:all": "npm run prettier -- --loglevel log",
