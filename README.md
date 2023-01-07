@@ -7,14 +7,11 @@ Schedule jobs in NodeJs using cron specifications
 ## Why?
 
 - Support async worker function and compatible with non-async too
-
 - Typescript support
-
 - No dependencies
-
 - Other good cron packages haven't been updated in a while
-
 - Small
+- Configurable
 
 ## How to use:
 
