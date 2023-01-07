@@ -1,1 +1,1 @@
-export { Job } from './job';
+export { CronJob } from './cron-job';

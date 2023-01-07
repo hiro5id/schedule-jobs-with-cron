@@ -1,4 +1,4 @@
-import { Job } from '../src/job';
+import { CronJob } from '../src/cron-job';
 import { expect } from 'chai';
 import { LoggerFunction } from '../src/logger-function.type';
 import { JobWorkerFunction } from '../src/job-worker-function.type';
@@ -14,7 +14,7 @@ describe('chron scheduler', function () {
 
   it('schedules sync job', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -36,7 +36,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -61,7 +61,7 @@ describe('chron scheduler', function () {
 
   it('schedules a-sync job', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -86,7 +86,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -111,7 +111,7 @@ describe('chron scheduler', function () {
 
   it('logs messages for a-sync job', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -139,7 +139,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -176,7 +176,7 @@ describe('chron scheduler', function () {
 
   it('logs messages for sync job', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -201,7 +201,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -238,7 +238,7 @@ describe('chron scheduler', function () {
 
   it('disables messages when set to false', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -263,7 +263,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       disableLogging: true,
       endDate: endTime,
       startDate: new Date(mockDate),
@@ -289,7 +289,7 @@ describe('chron scheduler', function () {
 
   it('throws error before worker function', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -314,7 +314,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -351,7 +351,7 @@ describe('chron scheduler', function () {
 
   it('throws error inside sync worker', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -376,7 +376,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -411,7 +411,7 @@ describe('chron scheduler', function () {
 
   it('throws error inside a-sync worker', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -438,7 +438,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -473,7 +473,7 @@ describe('chron scheduler', function () {
 
   it('rejects inside a-sync worker', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -500,7 +500,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: false,
@@ -535,7 +535,7 @@ describe('chron scheduler', function () {
 
   it('continues a-sync job on error if specified', async function () {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -573,7 +573,7 @@ describe('chron scheduler', function () {
 
     let afterSettingTimeoutCallbackCount = 0;
 
-    const job = new Job('testjob123', jobWorkerFunction, '*/1 * * * *', {
+    const job = new CronJob('testjob123', jobWorkerFunction, '*/1 * * * *', {
       endDate: endTime,
       startDate: new Date(mockDate),
       continueOnError: true,
@@ -612,7 +612,7 @@ describe('chron scheduler', function () {
 
   it('throws when start date is in the past', () => {
     let mockDate = `2010-01-01T00:04:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -621,7 +621,7 @@ describe('chron scheduler', function () {
 
     let caughtError: Error | null = null;
     try {
-      new Job('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(mockDate), endDate: endTime });
+      new CronJob('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(mockDate), endDate: endTime });
     } catch (err) {
       caughtError = err as Error;
     }
@@ -631,7 +631,7 @@ describe('chron scheduler', function () {
 
   it('throws when start date is in the past', () => {
     let mockDate = `2010-01-01T00:04:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -640,7 +640,7 @@ describe('chron scheduler', function () {
 
     let caughtError: Error | null = null;
     try {
-      new Job('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(startDate) });
+      new CronJob('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(startDate) });
     } catch (err) {
       caughtError = err as Error;
     }
@@ -650,7 +650,7 @@ describe('chron scheduler', function () {
 
   it('throws when start date is in the past', () => {
     let mockDate = `2010-01-01T00:00:00.000Z`;
-    const jobGetNowMock = jest.spyOn(Job.prototype as any, 'getNow');
+    const jobGetNowMock = jest.spyOn(CronJob.prototype as any, 'getNow');
     jobGetNowMock.mockImplementation(() => {
       return new Date(mockDate);
     });
@@ -660,7 +660,7 @@ describe('chron scheduler', function () {
 
     let caughtError: Error | null = null;
     try {
-      new Job('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(startDate), endDate: endTime });
+      new CronJob('a badly declared job', () => {}, '*/1 * * * *', { startDate: new Date(startDate), endDate: endTime });
     } catch (err) {
       caughtError = err as Error;
     }

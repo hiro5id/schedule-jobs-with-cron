@@ -2,7 +2,7 @@ import { CronScheduleGenerator } from './cron-parser/cron-schedule-generator';
 import { IJobOptions } from './job-options.interface';
 import { JobWorkerFunction } from './job-worker-function.type';
 
-export class Job {
+export class CronJob {
   /**
    *
    * @param jobName - Give the job a unique name that can be identified

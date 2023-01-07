@@ -10,7 +10,7 @@ Schedule jobs in NodeJs using cron specifications
 - Typescript support
 - No dependencies
 - Other good cron packages haven't been updated in a while
-- Small
+- Small (41 KB when installed from npm)
 - Configurable
 
 ## How to use:
