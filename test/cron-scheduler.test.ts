@@ -1,5 +1,7 @@
-import { Job, JobWorkerFunction, LoggerFunction } from '../src/job';
+import { Job } from '../src/job';
 import { expect } from 'chai';
+import { LoggerFunction } from '../src/logger-function.type';
+import { JobWorkerFunction } from '../src/job-worker-function.type';
 
 describe('chron scheduler', function () {
   beforeAll(() => {
