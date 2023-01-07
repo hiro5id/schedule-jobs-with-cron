@@ -9,9 +9,10 @@ Schedule jobs in NodeJs using cron specifications
 - Support async worker function and compatible with non-async too
 - Typescript support
 - No dependencies
-- Other good cron packages haven't been updated in a while
+- Cron parser shows the schedule in plain english
 - Small (~45 KB when installed from npm)
 - Configurable
+- Other good cron packages haven't been updated in a while
 
 ## How to use:
 
