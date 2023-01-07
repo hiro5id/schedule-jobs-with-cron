@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import { IsPositiveInteger } from '../src/is-positive-integer';
-import { parseCronParts } from '../src/parse-cron-parts';
+import { IsPositiveInteger } from '../src/cron-parser/is-positive-integer';
+import { parseCronParts } from '../src/cron-parser/parse-cron-parts';
 // noinspection ES6PreferShortImport
-import { CronScheduleGenerator } from '../src/cron-schedule-generator';
-import { CronPartUnitEnum } from '../src/cron-part-unit.enum';
-import { parseCronPart } from '../src/parse-cron-part';
+import { CronScheduleGenerator } from '../src/cron-parser/cron-schedule-generator';
+import { CronPartUnitEnum } from '../src/cron-parser/cron-part-unit.enum';
+import { parseCronPart } from '../src/cron-parser/parse-cron-part';
 
 function f(input: Date) {
   return input.toLocaleString('en-US', { timeStyle: 'full', dateStyle: 'full' });

@@ -1,4 +1,4 @@
-import { CronScheduleGenerator } from './cron-schedule-generator';
+import { CronScheduleGenerator } from './cron-parser/cron-schedule-generator';
 import { IJobOptions } from './job-options.interface';
 
 /**

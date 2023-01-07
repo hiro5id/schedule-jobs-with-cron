@@ -39,8 +39,6 @@
     "test:no-install": "npx --no-install jest",
     "clean": "rimraf ./dist ./node_modules",
     "audit": "npm audit --production",
-    "start": "ts-node ./src/main.ts",
-    "start-ts": "npm run prestart && ts-node src/main.ts",
     "prestart": "",
     "pretest": "",
     "prepare": "`# This installs git pre commit hook` husky install",
