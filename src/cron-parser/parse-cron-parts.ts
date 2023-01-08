@@ -47,7 +47,7 @@ export function parseCronParts(cronSPec: string, throwsExceptionOnFail: boolean 
     let completeComposedEnglish = `${englishMinute}${englishHour}${englishDayOfMonth}${englishDayOfWeek}${englishMonth}`;
 
     // shorthand modifications
-    // example: minute 5 past hour 0
+    // `minute 5 past hour 0` should become `00:05` for better readability
     if (processedParts.hour.matrix.length == 1 && processedParts.minute.matrix.length == 1) {
       completeComposedEnglish = completeComposedEnglish.replace(
         /minute [0-9]+ past hour [0-9]+/g,
