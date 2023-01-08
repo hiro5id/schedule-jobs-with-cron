@@ -17,6 +17,14 @@ Schedule jobs in NodeJs using cron specifications
 
 ## How to use basics:
 
+To install it:
+
+```shell
+npm i schedule-jobs-with-cron
+```
+
+To use it:
+
 ```typescript
 import { CronJob } from 'schedule-jobs-with-cron';
 
