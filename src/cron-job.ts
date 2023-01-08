@@ -35,6 +35,13 @@ export class CronJob {
     this.scheduleForNextIteration();
   }
 
+  /**
+   * returns the english interpretation of the cron schedule used to create this job
+   */
+  public get englishDescriptionOfCronSchedule() {
+    return this._scheduleGenerator.englishDescriptionOfSchedule;
+  }
+
   private get formattedJobName() {
     return `Job [${this.jobName}]: `;
   }

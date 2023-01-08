@@ -49,6 +49,8 @@ describe('chron scheduler', function () {
       },
     });
 
+    expect(job.englishDescriptionOfCronSchedule).eql('At every minute');
+
     try {
       await job.getPromise();
     } catch (err) {

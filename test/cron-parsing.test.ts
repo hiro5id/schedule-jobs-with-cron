@@ -119,9 +119,14 @@ describe('cron parsing tests', function () {
     expect(result.english).eql('At 22:00 and on every day-of-week from Monday through Friday');
   });
 
-  it('parse cron */4 2 4 2', function () {
+  it('parse cron 15 */4 2 4 2', function () {
     const result = parseCronParts('15 */4 2 4 2');
     expect(result.english).eql('At minute 15 past every 4th hour on day-of-month 2 and on Tuesday in April');
+  });
+
+  it('parse cron 5 4 * * *', function () {
+    const result = parseCronParts('5 4 * * *');
+    expect(result.english).eql('At 04:05');
   });
 
   it('parse cron 15 14/4 1 5,4,2 */2', function () {
