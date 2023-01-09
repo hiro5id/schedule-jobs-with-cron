@@ -1,4 +1,5 @@
 # schedule-jobs-with-cron
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/hiro5id/schedule-jobs-with-cron)
 ![node-current](https://img.shields.io/node/v/schedule-jobs-with-cron)
 ![NPM](https://img.shields.io/npm/l/schedule-jobs-with-cron)
 [![CodeQL](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml)
