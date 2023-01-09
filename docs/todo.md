@@ -1,6 +1,6 @@
 - [ ] Add ability to **randomize** **schedule**
 
-- [ ] a **runkit badge** to be able to get to the example even from **GitHub**.
+- [ ] A **runkit badge** to be able to get to the example even from **GitHub**.
 
 - [ ] Upon **startup** when logging out 'Scheduled to execute' also **log out the end date** if configured
 
@@ -28,6 +28,8 @@
 - [ ] Support **overriding** the **logger function** entirely
 
 - [ ] Add support for **seconds**
+
+- [ ] Add **documentation** on how to **contribute** and easy to find links (badge?)
 
 - [ ] Add **examples** documentation
 
