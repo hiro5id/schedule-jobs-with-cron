@@ -1,5 +1,7 @@
 - [ ] Add ability to **randomize** **schedule**
 
+- [ ] a **runkit badge** to be able to get to the example even from **GitHub**.
+
 - [ ] Upon **startup** when logging out 'Scheduled to execute' also **log out the end date** if configured
 
 - [ ] Add some **validations** for options input and other input... example **dates should be date objects**.
