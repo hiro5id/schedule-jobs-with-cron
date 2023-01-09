@@ -1,4 +1,4 @@
-- [ ] Test code with older versions of node example v4.
+- [ ] Add automation to test code with older versions of node example v14 and older.
 - [ ] Support overriding the logger function entirely
 - [ ] Add support for seconds
 - [ ] Add a "watcher" as separate project that checks to see if worker function has executed successfully in the last "x" iterations, if not then throw error
