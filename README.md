@@ -1,7 +1,11 @@
 # schedule-jobs-with-cron
-<a target="_blank" href="https://github.com/hiro5id/schedule-jobs-with-cron/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/hiro5id/schedule-jobs-with-cron"></a>
+<a href="https://github.com/hiro5id/schedule-jobs-with-cron/releases"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/hiro5id/schedule-jobs-with-cron"></a>
+<a href="https://github.com/hiro5id/schedule-jobs-with-cron/releases"><img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/hiro5id/schedule-jobs-with-cron"></a>
 <a href="https://github.com/hiro5id/schedule-jobs-with-cron/blob/main/package.json"><img alt="node-current" src="https://img.shields.io/node/v/schedule-jobs-with-cron"></a>
 <a href="https://github.com/hiro5id/schedule-jobs-with-cron/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/hiro5id/schedule-jobs-with-cron"></a>
+<a href="https://github.com/hiro5id/schedule-jobs-with-cron"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/hiro5id/schedule-jobs-with-cron"></a>
+<a href="https://github.com/hiro5id/schedule-jobs-with-cron/commits/main"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/hiro5id/schedule-jobs-with-cron"></a>
+
 [![CodeQL](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml)
 [![DevSkim](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/devskim.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/devskim.yml)
 [![ESLint](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml)
