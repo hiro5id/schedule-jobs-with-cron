@@ -29,7 +29,7 @@ Schedule jobs in NodeJs using cron specifications
 
 ## How to use basics:
 
-To install it:
+Install it from [npm](https://www.npmjs.com/package/schedule-jobs-with-cron):
 
 ```shell
 npm i schedule-jobs-with-cron
