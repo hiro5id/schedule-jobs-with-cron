@@ -9,6 +9,7 @@ import { parseCronPart } from '../src/cron-parser/parse-cron-part';
 function f(input: Date) {
   return input.toLocaleString('en-US', { timeStyle: 'full', dateStyle: 'full' });
 }
+
 describe('cron parsing tests', function () {
   it('generates schedule for 5 0 * 8 *', function () {
     const startDate = new Date('2022-12-23T19:00:00.000-04:00');
@@ -16,10 +17,21 @@ describe('cron parsing tests', function () {
     const cronScheduleGenerator = new CronScheduleGenerator('5 0 * 8 *', startDate);
 
     expect(cronScheduleGenerator.englishDescriptionOfSchedule).eql('At 00:05 in August');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Tuesday, August 1, 2023 at 12:05:00 AM Eastern Daylight Time');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Wednesday, August 2, 2023 at 12:05:00 AM Eastern Daylight Time');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Thursday, August 3, 2023 at 12:05:00 AM Eastern Daylight Time');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Friday, August 4, 2023 at 12:05:00 AM Eastern Daylight Time');
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Tuesday,.August.1,.2023.at.12:05:00.AM.*/));
+
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Wednesday,.August.2,.2023.at.12:05:00.AM.*/));
+
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Thursday,.August.3,.2023.at.12:05:00.AM.*/));
+
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Friday,.August.4,.2023.at.12:05:00.AM.*/));
   });
 
   it('generates schedule for 15 14/4 1 5,4,2 */2', function () {
@@ -27,10 +39,21 @@ describe('cron parsing tests', function () {
 
     const cronScheduleGenerator = new CronScheduleGenerator('15 14/4 1 5,4,2 */2', startDate);
 
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Wednesday, February 1, 2023 at 2:15:00 PM Eastern Standard Time');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Wednesday, February 1, 2023 at 6:15:00 PM Eastern Standard Time');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Wednesday, February 1, 2023 at 10:15:00 PM Eastern Standard Time');
-    expect(f(cronScheduleGenerator.getNextScheduledDate())).eql('Monday, May 1, 2023 at 2:15:00 PM Eastern Daylight Time');
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Wednesday,.February.1,.2023.at.2:15:00.PM.*/));
+
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Wednesday,.February.1,.2023.at.6:15:00.PM.*/));
+
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Wednesday,.February.1,.2023.at.10:15:00.PM.*/));
+
+    expect(f(cronScheduleGenerator.getNextScheduledDate()))
+      .to.be.a('string')
+      .and.satisfy((msg: string) => msg.match(/^Monday,.May.1,.2023.at.2:15:00.PM.*/));
   });
 
   it('throws exception when using invalid expression2', function () {

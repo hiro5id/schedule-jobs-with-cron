@@ -1,3 +1,4 @@
+- [ ] Test code with older versions of node example v4.
 - [ ] Support overriding the logger function entirely
 - [ ] Add support for seconds
 - [ ] Add a "watcher" as separate project that checks to see if worker function has executed successfully in the last "x" iterations, if not then throw error
