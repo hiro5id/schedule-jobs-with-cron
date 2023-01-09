@@ -26,6 +26,10 @@
 
 - [ ] Add support for **seconds**
 
+- [ ] Add **examples** documentation
+
+    - [ ] An exampe using various **options**
+
 - [ ] Add a "**watcher**" as separate project that checks to see if worker function has executed successfully in the last "x" iterations, if not then throw error
 
 - [ ] sub **github repo** for cron parser
