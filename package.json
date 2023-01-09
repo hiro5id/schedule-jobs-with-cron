@@ -7,6 +7,7 @@
   "directories": {
     "doc": "docs"
   },
+  "runkitExampleFilename": "dist/runkit-example.js",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "license": "MIT",
@@ -35,6 +36,7 @@
     "make-type-definitions": "npm-dts generate -e ./src/index.ts -o ./dist/index.d.ts",
     "build-one-file-from-js": "npm run build && esbuild ./dist/src/index.js --bundle --minify --platform=node --packages=external --target=node18.12.1 --outfile=./dist/index.js --allow-overwrite && rimraf ./dist/src ./dist/test && npm run make-type-definitions",
     "build-one-file-from-js-and-mangle": "npm run build-one-file-from-js && terser ./dist/index.js --compress --mangle --output ./dist/index.js",
+    "postbuild": "cp ./runkit-example.js ./dist/ ",
     "test": "rimraf ./coverage && jest --silent",
     "test:javascript": "jest --config=jest-for-js.config.js",
     "clean": "rimraf ./dist ./node_modules",

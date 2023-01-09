@@ -15,7 +15,7 @@
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
 
-    "lib": ["es2020", "dom"],
+    "lib": ["es2019", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ES2020",

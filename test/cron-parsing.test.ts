@@ -105,6 +105,12 @@ describe('cron parsing tests', function () {
     }).to.throw('unable to parse day of week from spec: [* * * * e]');
   });
 
+  it('parse cron with containing NBSP characters and extra spaces */2 * * * *', function () {
+    const nbsp = String.fromCharCode(160);
+    const result = parseCronParts(`*/2${nbsp} *${nbsp}    *${nbsp}*${nbsp}  *`);
+    expect(result.english).eql('At every 2nd minute');
+  });
+
   it('parse cron 0 22 4/3 2,3,1-5 1-5', function () {
     const result = parseCronParts('0 22 4/3 2,3,1-5 1-5');
     expect(result.english).eql(

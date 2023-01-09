@@ -2,9 +2,12 @@ import { IAllProcessedParts } from './all-processed-parts.interface';
 import { CronPartUnitEnum } from './cron-part-unit.enum';
 import { parseCronPart } from './parse-cron-part';
 import { addLeadingZeros } from './add-leading-zeros';
+import { cleanCronSpecInput } from './clean-cron-spec-input';
 
 export function parseCronParts(cronSPec: string, throwsExceptionOnFail: boolean = true): IAllProcessedParts {
-  const parts = cronSPec?.trim().toLowerCase().split(' ');
+  const cleanedCronSpec = cleanCronSpecInput(cronSPec);
+
+  const parts = cleanedCronSpec.toLowerCase().split(' ');
 
   // begin parsing
   if (parts.length == 5) {

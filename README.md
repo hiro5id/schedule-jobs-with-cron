@@ -45,6 +45,7 @@ const job1 = new CronJob(
   'A test Job 1',
   (triggerTime, log) => {
     log('info', `Hello from inside the job, it was triggered at: ${triggerTime}`);
+    // Add code that does some work here
   },
   '*/2 * * * *',
 );
