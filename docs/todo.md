@@ -21,6 +21,7 @@
 
     - another example for test coverage: https://time2hack.com/test-coverage-label-with-github-actions/
     - here is a project that uses codecov and a shield: https://github.com/moment/luxon
+    - coverage badge creator: https://www.npmjs.com/package/coverage-badge-creator?activeTab=readme
 
 - [ ] Support **overriding** the **logger function** entirely
 
