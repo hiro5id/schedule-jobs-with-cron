@@ -1,13 +1,13 @@
+- [ ] Add **automation** to **test** code with **older versions of node** example v14 and older.
+
+    * Running jest code as github actions: https://github.com/marketplace/actions/run-jest
+    * use specific node version: https://github.com/actions/setup-node
+
 - [ ] Add ability to **randomize** **schedule** based on a cron job
 
 - [ ] Support **overriding** the **logger function** entirely
 
 - [ ] Add support for **seconds**
-
-- [ ] Add **automation** to **test** code with **older versions of node** example v14 and older.
-
-    * Running jest code as github actions: https://github.com/marketplace/actions/run-jest
-    * use specific node version: https://github.com/actions/setup-node
 
 - [ ] Add test **coverage reporting**
 
