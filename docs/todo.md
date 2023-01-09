@@ -1,3 +1,4 @@
+- [ ] Add ability to randomize schedule
 - [ ] Add automation to test code with older versions of node example v14 and older.
 - [ ] Support overriding the logger function entirely
 - [ ] Add support for seconds
