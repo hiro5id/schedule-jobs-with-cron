@@ -1,4 +1,5 @@
 # schedule-jobs-with-cron
+[![CodeQL](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml)
 
 <a href="https://www.npmjs.com/package/schedule-jobs-with-cron"><img title="schedule jobs with cron header graphic" src="README-assets/c9aff62393369ca4e241934df63ffef0ff9cd342.png" alt="" data-align="center"></href>
 
