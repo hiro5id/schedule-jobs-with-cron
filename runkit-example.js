@@ -25,6 +25,8 @@ const job1 = new CronJob(
   },
 );
 
-// Await for the job
+// Await for the job.
+// Non-blocking; other functions can run in the meantime,
+// but any further lines in this one won't start until the promise resolves.
 await job1.getPromise();
 console.log('done');

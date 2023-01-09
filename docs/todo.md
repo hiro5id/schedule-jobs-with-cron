@@ -1,14 +1,8 @@
-- [ ] Add ability to **randomize** **schedule**
+- [ ] Add ability to **randomize** **schedule** based on a cron job
 
-- [ ] Upon **startup** when logging out 'Scheduled to execute' also **log out the end date** if configured
+- [ ] Support **overriding** the **logger function** entirely
 
-- [ ] Add some **validations** for options input and other input... example **dates should be date objects**.
-
-- [ ] Add **ending** based on fixed **number of iterations** executed.
-
-- [ ] Add **statistics** for the number of times executed and errored. ?
-
-- [ ] A **manual start** and **stop** property
+- [ ] Add support for **seconds**
 
 - [ ] Add **automation** to **test** code with **older versions of node** example v14 and older.
 
@@ -23,9 +17,15 @@
     - here is a project that uses codecov and a shield: https://github.com/moment/luxon
     - coverage badge creator: https://www.npmjs.com/package/coverage-badge-creator?activeTab=readme
 
-- [ ] Support **overriding** the **logger function** entirely
+- [ ] Upon **startup** when logging out 'Scheduled to execute' also **log out the end date** if configured
 
-- [ ] Add support for **seconds**
+- [ ] Add some **validations** for options input and other input... example **dates should be date objects**.
+
+- [ ] Add **ending** based on fixed **number of iterations** executed.
+
+- [ ] Add **statistics** for the number of times executed and errored. ?
+
+- [ ] A **manual start** and **stop** property
 
 - [ ] Add **documentation** on how to **contribute** and easy to find links (badge?)
 
