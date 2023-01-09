@@ -11,6 +11,7 @@
 [![CodeQL](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml)
 [![DevSkim](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/devskim.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/devskim.yml)
 [![ESLint](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml)
+<a href="https://npm.runkit.com/schedule-jobs-with-cron"><img alt="Try it on RunKit" src="https://img.shields.io/badge/LiveDemo-on%20RunKit-blueviolet"></a>
 
 <a href="https://www.npmjs.com/package/schedule-jobs-with-cron"><img title="schedule jobs with cron header graphic" src="README-assets/c9aff62393369ca4e241934df63ffef0ff9cd342.png" alt="" data-align="center"></a>
 
@@ -29,7 +30,7 @@ Schedule jobs in NodeJs using cron specifications
 
 ## How to use basics:
 
-To install it:
+Install it from [npm](https://www.npmjs.com/package/schedule-jobs-with-cron):
 
 ```shell
 npm i schedule-jobs-with-cron
