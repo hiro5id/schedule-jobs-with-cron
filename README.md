@@ -1,5 +1,6 @@
 # schedule-jobs-with-cron
 ![node-current](https://img.shields.io/node/v/schedule-jobs-with-cron)
+![NPM](https://img.shields.io/npm/l/schedule-jobs-with-cron)
 [![CodeQL](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/codeql.yml)
 [![DevSkim](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/devskim.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/devskim.yml)
 [![ESLint](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml)
