@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts'],
   testPathIgnorePatterns: [],
-  coverageReporters: ['lcov', 'text-summary'],
+  coverageReporters: ['lcov', 'text-summary', 'json-summary'],
   coverageProvider: 'babel',
   coverageDirectory: 'coverage/',
   collectCoverage: true,

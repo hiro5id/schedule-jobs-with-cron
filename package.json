@@ -49,6 +49,7 @@
     "install:prod": "npm ci",
     "preversion": "npm install husky@8.0.3 -g && npm run clean && npm run install:prod && npm run build-one-file-from-js-and-mangle && npm run test",
     "prepublishOnly": "npm prune --production",
+    "coverage:badge": "coverage-badge-creator",
     "deploy": "np"
   },
   "repository": {
@@ -70,6 +71,7 @@
     "@typescript-eslint/eslint-plugin": "5.48.1",
     "@typescript-eslint/parser": "5.48.1",
     "chai": "^4.3.7",
+    "coverage-badge-creator": "^1.0.15",
     "esbuild": "^0.16.16",
     "eslint": "8.31.0",
     "eslint-plugin-unicorn": "45.0.2",
