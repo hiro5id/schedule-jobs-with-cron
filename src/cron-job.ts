@@ -111,7 +111,7 @@ export class CronJob {
     const now = this.getNow();
     const milisecondsToNextTrigger = nextTrigger.getTime() - now.getTime();
 
-    this.log('info', `Scheduling to trigger in the next ${milisecondsToNextTrigger} ms, at (${nextTrigger}) the time is now ${now}.`);
+    this.log('info', `Scheduling to trigger in the next ${milisecondsToNextTrigger} ms, at ${nextTrigger.toISOString()} the time is now ${now.toISOString()}.`);
     this._jobIterationPromise = new Promise<void>((resolveJobIteration, rejectJobIteration) => {
       setTimeout(() => {
         if (this._jobOptions.beforeExecutingWorkerCallback) {
