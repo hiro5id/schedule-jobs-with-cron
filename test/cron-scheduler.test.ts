@@ -337,9 +337,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Error: This is a simulated error after running jobWorkerFunction',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Error: This is a simulated error after running jobWorkerFunction');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
@@ -398,9 +396,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Job [testjob123]: Error: This is an error inside async worker function',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Job [testjob123]: Error: This is an error inside async worker function');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
@@ -460,9 +456,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Job [testjob123]: Error: This is an error inside async worker function',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Job [testjob123]: Error: This is an error inside async worker function');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
@@ -522,9 +516,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Job [testjob123]: we are rejecting from inside jobWorkerFunction',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Job [testjob123]: we are rejecting from inside jobWorkerFunction');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
