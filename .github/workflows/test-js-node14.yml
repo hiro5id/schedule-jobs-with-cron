@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: use node18
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: use node14
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 14
 
