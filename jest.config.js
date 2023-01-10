@@ -8,4 +8,9 @@ module.exports = {
   coverageDirectory: 'coverage/',
   collectCoverage: true,
   testTimeout: 60000,
+  coverageThreshold: {
+    global: {
+      lines: 80,
+    },
+  },
 };
