@@ -13,7 +13,7 @@
 [![ESLint](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml/badge.svg)](https://github.com/hiro5id/schedule-jobs-with-cron/actions/workflows/eslint.yml)
 <a href="https://npm.runkit.com/schedule-jobs-with-cron"><img alt="Try it on RunKit" src="https://img.shields.io/badge/LiveDemo-on%20RunKit-blueviolet"></a>
 
-<a href="https://www.npmjs.com/package/schedule-jobs-with-cron"><img align="left" width="49%" title="schedule jobs with cron header graphic" src="README-assets/c9aff62393369ca4e241934df63ffef0ff9cd342.png" alt="" data-align="center"></a>
+<a href="https://www.npmjs.com/package/schedule-jobs-with-cron"><img align="left" width="50%" title="schedule jobs with cron header graphic" src="README-assets/c9aff62393369ca4e241934df63ffef0ff9cd342.png" alt="" data-align="center"></a>
 
 Schedule jobs in NodeJs using cron specifications
 
