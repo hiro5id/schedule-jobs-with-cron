@@ -162,13 +162,13 @@ describe('chron scheduler', function () {
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:02:00.000Z the time is now 2010-01-01T00:01:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:03:00.000Z the time is now 2010-01-01T00:02:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: End date reached, resolving job promise...',
@@ -224,13 +224,13 @@ describe('chron scheduler', function () {
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:02:00.000Z the time is now 2010-01-01T00:01:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:03:00.000Z the time is now 2010-01-01T00:02:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: End date reached, resolving job promise...',
@@ -343,7 +343,7 @@ describe('chron scheduler', function () {
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled did not finish!',
     ]);
@@ -404,7 +404,7 @@ describe('chron scheduler', function () {
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Scheduled did not finish!',
     ]);
 
@@ -466,7 +466,7 @@ describe('chron scheduler', function () {
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Scheduled did not finish!',
     ]);
 
@@ -528,7 +528,7 @@ describe('chron scheduler', function () {
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Scheduled did not finish!',
     ]);
 
@@ -598,13 +598,13 @@ describe('chron scheduler', function () {
     expect(triggerTwoReached).to.be.true;
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:00:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled did not finish!',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:02:00.000Z the time is now 2010-01-01T00:01:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
-      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at (Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)) the time is now Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time).',
+      'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:03:00.000Z the time is now 2010-01-01T00:02:00.000Z.',
       'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: End date reached, resolving job promise...',
