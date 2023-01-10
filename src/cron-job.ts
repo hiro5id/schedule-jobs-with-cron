@@ -157,7 +157,7 @@ export class CronJob {
       })
       .catch(err => {
         this.log('info', `Scheduled did not finish!`);
-        const errMessage = `${this.formattedJobName}Error running job at iteration ${nextTrigger}: ${err}`;
+        const errMessage = `${this.formattedJobName}Error running job at iteration ${nextTrigger.toISOString()}: ${err}`;
 
         if (this._jobOptions.continueOnError) {
           this.scheduleForNextIteration();

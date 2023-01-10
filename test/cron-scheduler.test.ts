@@ -25,7 +25,7 @@ describe('chron scheduler', function () {
     let triggerTwoReached = false;
 
     const jobWorkerFunction: JobWorkerFunction = (triggerTime: Date, log: LoggerFunction) => {
-      log('info', `Hello this is a test ${triggerTime}`);
+      log('info', `Hello this is a test ${triggerTime.toISOString()}`);
       if (!triggerOneReached) {
         triggerOneReached = true;
       }
@@ -75,7 +75,7 @@ describe('chron scheduler', function () {
 
     const jobWorkerFunction: JobWorkerFunction = async (triggerTime: Date, log: LoggerFunction) => {
       return new Promise(resolve => {
-        log('info', `Hello this is a test ${triggerTime}`);
+        log('info', `Hello this is a test ${triggerTime.toISOString()}`);
         if (!triggerOneReached) {
           triggerOneReached = true;
         }
@@ -134,7 +134,7 @@ describe('chron scheduler', function () {
 
     const jobWorkerFunction: JobWorkerFunction = async (triggerTime: Date, log: LoggerFunction) => {
       return new Promise(resolve => {
-        log('info', `Hello this is a test ${triggerTime}`);
+        log('info', `Hello this is a test ${triggerTime.toISOString()}`);
         resolve();
       });
     };
@@ -163,13 +163,13 @@ describe('chron scheduler', function () {
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:01:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:02:00.000Z the time is now 2010-01-01T00:01:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:02:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:03:00.000Z the time is now 2010-01-01T00:02:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:03:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: End date reached, resolving job promise...',
     ]);
@@ -198,7 +198,7 @@ describe('chron scheduler', function () {
     const endTime = new Date(`2010-01-01T00:04:00.000Z`);
 
     const jobWorkerFunction: JobWorkerFunction = (triggerTime: Date, log: LoggerFunction) => {
-      log('info', `Hello this is a test ${triggerTime}`);
+      log('info', `Hello this is a test ${triggerTime.toISOString()}`);
     };
 
     let afterSettingTimeoutCallbackCount = 0;
@@ -225,13 +225,13 @@ describe('chron scheduler', function () {
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:01:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:02:00.000Z the time is now 2010-01-01T00:01:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:02:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:03:00.000Z the time is now 2010-01-01T00:02:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:03:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: End date reached, resolving job promise...',
     ]);
@@ -260,7 +260,7 @@ describe('chron scheduler', function () {
     const endTime = new Date(`2010-01-01T00:04:00.000Z`);
 
     const jobWorkerFunction: JobWorkerFunction = async (triggerTime: Date, log: LoggerFunction) => {
-      log('info', `Hello this is a test ${triggerTime}`);
+      log('info', `Hello this is a test ${triggerTime.toISOString()}`);
     };
 
     let afterSettingTimeoutCallbackCount = 0;
@@ -311,7 +311,7 @@ describe('chron scheduler', function () {
     const endTime = new Date(`2010-01-01T00:04:00.000Z`);
 
     const jobWorkerFunction: JobWorkerFunction = async (triggerTime: Date, log: LoggerFunction) => {
-      log('info', `Hello this is a test ${triggerTime}`);
+      log('info', `Hello this is a test ${triggerTime.toISOString()}`);
     };
 
     let afterSettingTimeoutCallbackCount = 0;
@@ -337,14 +337,12 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Error: This is a simulated error after running jobWorkerFunction',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Error: This is a simulated error after running jobWorkerFunction');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:01:00.000Z',
       'Job [testjob123]: Scheduled did not finish!',
     ]);
 
@@ -398,9 +396,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Job [testjob123]: Error: This is an error inside async worker function',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Job [testjob123]: Error: This is an error inside async worker function');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
@@ -460,9 +456,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Job [testjob123]: Error: This is an error inside async worker function',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Job [testjob123]: Error: This is an error inside async worker function');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
@@ -522,9 +516,7 @@ describe('chron scheduler', function () {
       caughtError = err as string;
     }
 
-    expect(caughtError).eql(
-      'Job [testjob123]: Error running job at iteration Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time): Job [testjob123]: we are rejecting from inside jobWorkerFunction',
-    );
+    expect(caughtError).eql('Job [testjob123]: Error running job at iteration 2010-01-01T00:01:00.000Z: Job [testjob123]: we are rejecting from inside jobWorkerFunction');
 
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
@@ -561,7 +553,7 @@ describe('chron scheduler', function () {
 
     const jobWorkerFunction: JobWorkerFunction = async (triggerTime: Date, log: LoggerFunction) => {
       return new Promise((resolve, reject) => {
-        log('info', `Hello this is a test ${triggerTime}`);
+        log('info', `Hello this is a test ${triggerTime.toISOString()}`);
         if (!triggerOneReached) {
           triggerOneReached = true;
           reject('error from first trigger');
@@ -599,13 +591,13 @@ describe('chron scheduler', function () {
     expect(consoleMessages).eql([
       'Job [testjob123]: Scheduled to execute: At every minute',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:01:00.000Z the time is now 2010-01-01T00:00:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:01:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:01:00.000Z',
       'Job [testjob123]: Scheduled did not finish!',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:02:00.000Z the time is now 2010-01-01T00:01:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:02:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:02:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: Scheduling to trigger in the next 60000 ms, at 2010-01-01T00:03:00.000Z the time is now 2010-01-01T00:02:00.000Z.',
-      'Job [testjob123]: Hello this is a test Thu Dec 31 2009 19:03:00 GMT-0500 (Eastern Standard Time)',
+      'Job [testjob123]: Hello this is a test 2010-01-01T00:03:00.000Z',
       'Job [testjob123]: Scheduled trigger finished!',
       'Job [testjob123]: End date reached, resolving job promise...',
     ]);

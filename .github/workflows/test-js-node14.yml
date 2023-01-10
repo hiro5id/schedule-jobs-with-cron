@@ -1,0 +1,37 @@
+name: test-js-in-node14
+on:
+  push:
+    branches: [ "main" ] 
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]   
+    
+jobs:
+  build:
+    name: Run tests on compiled javascript
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: use node18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install
+        run: npm install
+        
+      - name: Build  
+        run: npm run build
+
+      - name: use node14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: print node
+        run: node --version
+
+      - name: Test  
+        run: npm run test:javascript
