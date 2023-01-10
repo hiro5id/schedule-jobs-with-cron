@@ -37,8 +37,9 @@
     "build-one-file-from-js": "npm run build && esbuild ./dist/src/index.js --bundle --minify --platform=node --packages=external --target=node18.12.1 --outfile=./dist/index.js --allow-overwrite && rimraf ./dist/src ./dist/test && npm run make-type-definitions",
     "build-one-file-from-js-and-mangle": "npm run build-one-file-from-js && terser ./dist/index.js --compress --mangle --output ./dist/index.js",
     "postbuild": "cp ./runkit-example.js ./dist/ ",
-    "test": "rimraf ./coverage && jest --silent",
+    "test": "rimraf ./coverage && jest --silent && npm run coverage:badge",
     "test:javascript": "jest --config=jest-for-js.config.js",
+    "coverage:badge": "coverage-badge-creator",
     "clean": "rimraf ./dist ./node_modules",
     "audit": "npm audit --production",
     "prestart": "",
@@ -49,7 +50,6 @@
     "install:prod": "npm ci",
     "preversion": "npm install husky@8.0.3 -g && npm run clean && npm run install:prod && npm run build-one-file-from-js-and-mangle && npm run test",
     "prepublishOnly": "npm prune --production",
-    "coverage:badge": "coverage-badge-creator",
     "deploy": "np"
   },
   "repository": {
