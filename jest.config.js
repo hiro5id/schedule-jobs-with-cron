@@ -3,9 +3,14 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts'],
   testPathIgnorePatterns: [],
-  coverageReporters: ['lcov', 'text-summary'],
+  coverageReporters: ['lcov', 'text-summary', 'json-summary'],
   coverageProvider: 'babel',
   coverageDirectory: 'coverage/',
   collectCoverage: true,
   testTimeout: 60000,
+  coverageThreshold: {
+    global: {
+      lines: 80,
+    },
+  },
 };

@@ -30,3 +30,5 @@ const job1 = new CronJob(
 // but any further lines in this one won't start until the promise resolves.
 await job1.getPromise();
 console.log('done');
+
+/****  watch for console log output below  ****/

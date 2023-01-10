@@ -1,21 +1,16 @@
-- [ ] Add **automation** to **test** code with **older versions of node** example v14 and older.
+- [ ] Add test **coverage reporting**
 
-    * Running jest code as github actions: https://github.com/marketplace/actions/run-jest
-    * use specific node version: https://github.com/actions/setup-node
+    * Here is an example: https://tnodes.medium.com/dynamic-badges-with-shields-io-and-runkit-9e80283f1b47 <--- this is only for creating dynamic badges if using a custom CI build pipeline.   
+
+    - another example for test coverage: https://time2hack.com/test-coverage-label-with-github-actions/ < -- this one seems too complicated.
+    - here is a project that uses codecov and a shield: https://github.com/moment/luxon <--- codecov needs to much access
+    - coverage badge creator: https://www.npmjs.com/package/coverage-badge-creator?activeTab=readme
 
 - [ ] Add ability to **randomize** **schedule** based on a cron job
 
 - [ ] Support **overriding** the **logger function** entirely
 
 - [ ] Add support for **seconds**
-
-- [ ] Add test **coverage reporting**
-
-    * Here is an example: https://tnodes.medium.com/dynamic-badges-with-shields-io-and-runkit-9e80283f1b47    
-
-    - another example for test coverage: https://time2hack.com/test-coverage-label-with-github-actions/
-    - here is a project that uses codecov and a shield: https://github.com/moment/luxon
-    - coverage badge creator: https://www.npmjs.com/package/coverage-badge-creator?activeTab=readme
 
 - [ ] Upon **startup** when logging out 'Scheduled to execute' also **log out the end date** if configured
 
@@ -48,3 +43,8 @@
 - [x] Add optional job name so that when logging out errors or messages, we know which job this is about. By default we should generate a random job ID if not explicitly specified. Or we could make the job name mandatory.
 
 - [x] Create a "runner" promise that one can await on - possibly forever - as long as the job is running and re-scheduling itself.
+
+- [x] Add **automation** to **test** code with **older versions of node** example v14 and older.
+
+    * Running jest code as github actions: https://github.com/marketplace/actions/run-jest
+    * use specific node version: https://github.com/actions/setup-node
