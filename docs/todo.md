@@ -1,5 +1,7 @@
 - [ ] Add ability to **randomize** **schedule** based on a cron job
 
+- [ ] Run **tests** in github on different versions of **operating systems** an node example: https://github.com/TooTallNate/node-https-proxy-agent/blob/master/.github/workflows/test.yml
+
 - [ ] Support **overriding** the **logger function** entirely
 
 - [ ] Add support for **seconds**

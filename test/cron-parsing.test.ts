@@ -111,6 +111,11 @@ describe('cron parsing tests', function () {
     expect(result.english).eql('At every 2nd minute');
   });
 
+  it('parse cron * 3 * * *', function () {
+    const result = parseCronParts('* 3 * * *');
+    expect(result.english).eql('At every minute past hour 3');
+  });
+
   it('parse cron 0 22 4/3 2,3,1-5 1-5', function () {
     const result = parseCronParts('0 22 4/3 2,3,1-5 1-5');
     expect(result.english).eql(
