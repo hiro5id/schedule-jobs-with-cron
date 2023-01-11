@@ -1,12 +1,6 @@
-- [ ] Add test **coverage reporting**
-
-    * Here is an example: https://tnodes.medium.com/dynamic-badges-with-shields-io-and-runkit-9e80283f1b47 <--- this is only for creating dynamic badges if using a custom CI build pipeline.   
-
-    - another example for test coverage: https://time2hack.com/test-coverage-label-with-github-actions/ < -- this one seems too complicated.
-    - here is a project that uses codecov and a shield: https://github.com/moment/luxon <--- codecov needs to much access
-    - coverage badge creator: https://www.npmjs.com/package/coverage-badge-creator?activeTab=readme
-
 - [ ] Add ability to **randomize** **schedule** based on a cron job
+
+- [ ] Run **tests** in github on different versions of **operating systems** an node example: https://github.com/TooTallNate/node-https-proxy-agent/blob/master/.github/workflows/test.yml
 
 - [ ] Support **overriding** the **logger function** entirely
 
@@ -48,3 +42,12 @@
 
     * Running jest code as github actions: https://github.com/marketplace/actions/run-jest
     * use specific node version: https://github.com/actions/setup-node
+
+- [x] Add test **coverage reporting**
+
+    * Here is an example: https://tnodes.medium.com/dynamic-badges-with-shields-io-and-runkit-9e80283f1b47 <--- this is only for creating dynamic badges if using a custom CI build pipeline.   
+
+    - another example for test coverage: https://time2hack.com/test-coverage-label-with-github-actions/ < -- this one seems too complicated.
+    - here is a project that uses codecov and a shield: https://github.com/moment/luxon <--- codecov needs to much access
+    - coverage badge creator: https://www.npmjs.com/package/coverage-badge-creator?activeTab=readme
+- [ ] .........
