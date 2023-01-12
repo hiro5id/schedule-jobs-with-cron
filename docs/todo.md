@@ -1,3 +1,5 @@
+- [ ] Add the english schedule & crontab to the log message when the schedule finishes, when the next time it is scheduled to run.
+
 - [ ] Add ability to **randomize** **schedule** based on a cron job
 
 - [ ] Change message `Scheduling to trigger in the next 23724 ms` to show it in minutes instead of milisecodns to be more human friendly...
