@@ -18,8 +18,13 @@ export class CronScheduleGenerator {
   private readonly _parsedCron: IAllProcessedParts;
   private _triggeredDate: Date;
 
-  public getNextScheduledDate(): Date {
-    let now = this._triggeredDate;
+  public getNextScheduledDate(fromDate?: Date): Date {
+    let now: Date;
+    if (fromDate) {
+      now = fromDate;
+    } else {
+      now = this._triggeredDate;
+    }
 
     for (let i = 0; i < 900100; i++) {
       now.setMinutes(now.getMinutes() + 1);
