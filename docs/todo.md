@@ -1,5 +1,7 @@
 - [ ] Add ability to **randomize** **schedule** based on a cron job
 
+- [ ] Change message `Scheduling to trigger in the next 23724 ms` to show it in minutes instead of milisecodns to be more human friendly...
+
 - [ ] Run **tests** in github on different versions of **operating systems** an node example: https://github.com/TooTallNate/node-https-proxy-agent/blob/master/.github/workflows/test.yml
 
 - [ ] Support **overriding** the **logger function** entirely
@@ -29,6 +31,8 @@
 - [ ] should I generate **WebIDL** definitions? Is it useful?
 
 - [ ] **compentition**? https://github.com/breejs/bree
+
+- [ ] I like the way this package.json is layed out with extra documentation bits about maintainers and contributors: https://github.com/Unitech/pm2/blob/master/package.json
 
 - [x] A **runkit badge** to be able to get to the example even from **GitHub**.
 

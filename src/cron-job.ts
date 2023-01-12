@@ -102,7 +102,7 @@ export class CronJob {
    * @private
    */
   private scheduleForNextIteration() {
-    const nextTrigger = this._scheduleGenerator.getNextScheduledDate();
+    const nextTrigger = this._scheduleGenerator.getNextScheduledDate(this.getNow());
     if (this._jobOptions.endDate && nextTrigger >= this._jobOptions.endDate) {
       this.log('info', `End date reached, resolving job promise...`);
       this._resolveJobRunner();
