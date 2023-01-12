@@ -32,6 +32,8 @@
 
 - [ ] **compentition**? https://github.com/breejs/bree
 
+- [ ] I like the way this package.json is layed out with extra documentation bits about maintainers and contributors: https://github.com/Unitech/pm2/blob/master/package.json
+
 - [x] A **runkit badge** to be able to get to the example even from **GitHub**.
 
 - [x] main branch protection and force pull requests) 
