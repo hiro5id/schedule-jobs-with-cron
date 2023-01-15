@@ -620,7 +620,7 @@ describe('chron scheduler', function () {
       caughtError = err as Error;
     }
 
-    expect(caughtError?.message).eql('Job [a badly declared job]: End date cannot be in the past');
+    expect(caughtError?.message).eql('Job [a badly declared job]: End date cannot be in the past: 2010-01-01T00:00:00.000Z now is: 2010-01-01T00:04:00.000Z');
   });
 
   it('throws when start date is in the past', () => {
@@ -639,7 +639,7 @@ describe('chron scheduler', function () {
       caughtError = err as Error;
     }
 
-    expect(caughtError?.message).eql('Job [a badly declared job]: Start date cannot be in the past');
+    expect(caughtError?.message).eql('Job [a badly declared job]: Start date cannot be in the past: 2010-01-01T00:00:00.000Z now is: 2010-01-01T00:04:00.000Z');
   });
 
   it('throws when start date is in the past', () => {
@@ -659,6 +659,6 @@ describe('chron scheduler', function () {
       caughtError = err as Error;
     }
 
-    expect(caughtError?.message).eql('Job [a badly declared job]: End date cannot be before start date');
+    expect(caughtError?.message).eql('Job [a badly declared job]: End date cannot be before start date, start: 2010-01-01T00:05:00.000Z end: 2010-01-01T00:00:00.000Z');
   });
 });
