@@ -15,13 +15,13 @@ export class CronJob {
 
     const now = this.getNow();
     if (this._jobOptions.startDate!.getTime() - now.getTime() < 0) {
-      this.throwError('Start date cannot be in the past');
+      this.throwError(`Start date cannot be in the past: ${this._jobOptions.startDate!.toISOString()} now is: ${now.toISOString()}`);
     }
     if (this._jobOptions.endDate && this._jobOptions.endDate.getTime() - now.getTime() < 0) {
-      this.throwError('End date cannot be in the past');
+      this.throwError(`End date cannot be in the past: ${this._jobOptions.endDate.toISOString()} now is: ${now.toISOString()}`);
     }
     if (this._jobOptions.endDate && this._jobOptions.startDate && this._jobOptions.endDate.getTime() - this._jobOptions.startDate.getTime() <= 0) {
-      this.throwError('End date cannot be before start date');
+      this.throwError(`End date cannot be before start date, start: ${this._jobOptions.startDate.toISOString()} end: ${this._jobOptions.endDate.toISOString()}`);
     }
 
     this._scheduleGenerator = new CronScheduleGenerator(cronSchedule, this._jobOptions.startDate!);
