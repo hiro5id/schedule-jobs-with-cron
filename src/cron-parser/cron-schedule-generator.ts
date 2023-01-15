@@ -21,9 +21,9 @@ export class CronScheduleGenerator {
   public getNextScheduledDate(fromDate?: Date): Date {
     let now: Date;
     if (fromDate) {
-      now = fromDate;
+      now = new Date(fromDate.getTime());
     } else {
-      now = this._triggeredDate;
+      now = new Date(this._triggeredDate.getTime());
     }
 
     for (let i = 0; i < 900100; i++) {

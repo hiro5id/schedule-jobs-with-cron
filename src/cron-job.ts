@@ -102,13 +102,14 @@ export class CronJob {
    * @private
    */
   private scheduleForNextIteration() {
-    const nextTrigger = this._scheduleGenerator.getNextScheduledDate(this.getNow());
+    const now = this.getNow();
+    const nextTrigger = this._scheduleGenerator.getNextScheduledDate(now);
     if (this._jobOptions.endDate && nextTrigger >= this._jobOptions.endDate) {
       this.log('info', `End date reached, resolving job promise...`);
       this._resolveJobRunner();
       return;
     }
-    const now = this.getNow();
+
     const milisecondsToNextTrigger = nextTrigger.getTime() - now.getTime();
 
     this.log('info', `Scheduling to trigger in the next ${milisecondsToNextTrigger} ms, at ${nextTrigger.toISOString()} the time is now ${now.toISOString()}.`);
