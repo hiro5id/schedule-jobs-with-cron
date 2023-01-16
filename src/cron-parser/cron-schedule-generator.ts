@@ -1,6 +1,15 @@
 import { IAllProcessedParts } from './all-processed-parts.interface';
 import { parseCronParts } from './parse-cron-parts';
 
+export function NormalizeDayNumber(dayNumber: number): number {
+  // Day zero in Javascript is Sunday
+  if (dayNumber == 0) {
+    // we will return 7 for the purpose of this library 7 is sunday
+    return 7;
+  }
+  // any other number 1 to 6 is monday to saturday
+  return dayNumber;
+}
 export class CronScheduleGenerator {
   /**
    * Accepts a standard crontab specification
@@ -36,7 +45,7 @@ export class CronScheduleGenerator {
         this._parsedCron.hour.matrix.includes(now.getHours()) &&
         this._parsedCron.day_of_month.matrix.includes(now.getDate()) &&
         this._parsedCron.month.matrix.includes(now.getMonth() + 1) &&
-        this._parsedCron.day_of_week.matrix.includes(now.getDay())
+        this._parsedCron.day_of_week.matrix.includes(NormalizeDayNumber(now.getDay()))
       ) {
         this._triggeredDate = now;
         return new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), 0, 0);

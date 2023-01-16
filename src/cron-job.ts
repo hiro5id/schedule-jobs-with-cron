@@ -2,6 +2,9 @@ import { CronScheduleGenerator } from './cron-parser/cron-schedule-generator';
 import { IJobOptions } from './job-options.interface';
 import { JobWorkerFunction } from './job-worker-function.type';
 
+export function StripMilli(input: Date): Date {
+  return new Date(input.getFullYear(), input.getMonth(), input.getDate(), input.getHours(), input.getMinutes(), input.getSeconds(), 0);
+}
 export class CronJob {
   /**
    *
@@ -14,13 +17,13 @@ export class CronJob {
     this._jobOptions = { ...this._defaultOptions, ...jobOptions };
 
     const now = this.getNow();
-    if (this._jobOptions.startDate!.getTime() - now.getTime() < 0) {
+    if (StripMilli(this._jobOptions.startDate!).getTime() - StripMilli(now).getTime() < 0) {
       this.throwError(`Start date cannot be in the past: ${this._jobOptions.startDate!.toISOString()} now is: ${now.toISOString()}`);
     }
-    if (this._jobOptions.endDate && this._jobOptions.endDate.getTime() - now.getTime() < 0) {
+    if (this._jobOptions.endDate && StripMilli(this._jobOptions.endDate).getTime() - StripMilli(now).getTime() < 0) {
       this.throwError(`End date cannot be in the past: ${this._jobOptions.endDate.toISOString()} now is: ${now.toISOString()}`);
     }
-    if (this._jobOptions.endDate && this._jobOptions.startDate && this._jobOptions.endDate.getTime() - this._jobOptions.startDate.getTime() <= 0) {
+    if (this._jobOptions.endDate && this._jobOptions.startDate && StripMilli(this._jobOptions.endDate).getTime() - StripMilli(this._jobOptions.startDate).getTime() <= 0) {
       this.throwError(`End date cannot be before start date, start: ${this._jobOptions.startDate.toISOString()} end: ${this._jobOptions.endDate.toISOString()}`);
     }
 
