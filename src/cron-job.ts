@@ -38,6 +38,8 @@ export class CronJob {
     this.scheduleForNextIteration();
   }
 
+  public numberOfExecutedIterations: number = 0;
+
   /**
    * returns the english interpretation of the cron schedule used to create this job
    */
@@ -65,6 +67,7 @@ export class CronJob {
    * @private
    */
   private _defaultOptions: IJobOptions = {
+    numberOfScheduledIterationsToExecute: 0,
     endDate: null,
     continueOnError: false,
     startDate: this.getNow(),
@@ -105,6 +108,14 @@ export class CronJob {
    * @private
    */
   private scheduleForNextIteration() {
+    // check iteration count
+    if (this._jobOptions.numberOfScheduledIterationsToExecute && this.numberOfExecutedIterations >= this._jobOptions.numberOfScheduledIterationsToExecute) {
+      this.log('info', `Number of scheduled iterations to execute reached ${this._jobOptions.numberOfScheduledIterationsToExecute}, resolving job promis....`);
+      this._resolveJobRunner();
+      return;
+    }
+
+    // check end date
     const now = this.getNow();
     const nextTrigger = this._scheduleGenerator.getNextScheduledDate(now);
     if (this._jobOptions.endDate && nextTrigger >= this._jobOptions.endDate) {
@@ -123,6 +134,7 @@ export class CronJob {
         }
         const now = this.getNow();
         try {
+          this.numberOfExecutedIterations += 1;
           // bind the "this" context because it gets lost
           const logger = this.log.bind(this);
           const actionResult = this.jobWorkerFunction(now, logger);

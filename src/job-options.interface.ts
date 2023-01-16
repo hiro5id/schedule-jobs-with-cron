@@ -1,5 +1,14 @@
 export interface IJobOptions {
   /**
+   * The number of scheduled iterations the scheduler should execute.
+   * For example, if the schedule is once every minute, and
+   * the number of iterations is set to 5, then it wll execute the worker
+   * five times once every minute, after which the shedule will end.
+   *
+   * default is 0. Zero is special, it means there is no end.
+   */
+  numberOfScheduledIterationsToExecute?: number;
+  /**
    * Optional specify wether to continue the job schedule if an error occurs.
    * The default for this is false.
    */
