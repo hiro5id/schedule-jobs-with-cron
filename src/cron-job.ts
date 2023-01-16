@@ -27,8 +27,12 @@ export class CronJob {
       this.throwError(`End date cannot be before start date, start: ${this._jobOptions.startDate.toISOString()} end: ${this._jobOptions.endDate.toISOString()}`);
     }
 
+    let execIterations = '';
+    if (this._jobOptions.numberOfScheduledIterationsToExecute) {
+      execIterations = ` for ${this._jobOptions.numberOfScheduledIterationsToExecute} iterations.`;
+    }
     this._scheduleGenerator = new CronScheduleGenerator(cronSchedule, this._jobOptions.startDate!);
-    this.log('info', `Scheduled to execute: ${this._scheduleGenerator.englishDescriptionOfSchedule}`);
+    this.log('info', `Scheduled to execute: ${this._scheduleGenerator.englishDescriptionOfSchedule}${execIterations}`);
 
     this._jobRunnerPromise = new Promise((resolve, reject) => {
       this._resolveJobRunner = resolve;
@@ -135,6 +139,7 @@ export class CronJob {
         const now = this.getNow();
         try {
           this.numberOfExecutedIterations += 1;
+          this.log('info', `Executing iteration #${this.numberOfExecutedIterations}`);
           // bind the "this" context because it gets lost
           const logger = this.log.bind(this);
           const actionResult = this.jobWorkerFunction(now, logger);
