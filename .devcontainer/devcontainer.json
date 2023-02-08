@@ -80,7 +80,7 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "yarn install",
+  // "postCreateCommand": "BASH_ENV=/home/node/.bashrc bash -lc 'nvm use 18 && nvm install-latest-npm'"
 
   // Configure tool-specific properties.
   // "customizations": {},
