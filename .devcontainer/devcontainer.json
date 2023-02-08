@@ -68,8 +68,7 @@
         "kavod-io.vscode-jest-test-adapter",
         "nilobarp.javascript-test-runner",
         "vespa-dev-works.jestRunIt",
-        "andys8.jest-snippets",
-        "Orta.vscode-jest"
+        "andys8.jest-snippets"
       ]
     }
   }
