@@ -12,7 +12,8 @@ FROM node:18-bullseye
 RUN apt update
 RUN apt install -y \
     curl \
-    git
+    git \
+    xdg-utils
 
 
 
