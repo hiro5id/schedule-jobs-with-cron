@@ -68,7 +68,8 @@
     "install:prod": "npm ci",
     "preversion": "npm install husky@8.0.3 -g && npm run clean && npm run install:prod && npm run build-one-file-from-js-and-mangle && npm run test",
     "prepublishOnly": "npm prune --production",
-    "deploy": "np"
+    "deploy": "np",
+    "open-release-draft-last-version": "npx np --release-draft-only"
   },
   "repository": {
     "type": "git",
