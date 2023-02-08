@@ -64,3 +64,11 @@ out-tsc
 *.env
 
 # misc
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/schedule-jobs-with-cron.iml
+.idea/vcs.xml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
+.idea/inspectionProfiles/Project_Default.xml

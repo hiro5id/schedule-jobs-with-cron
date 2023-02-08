@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  devcontainer:
+    image: sebestyen/schedule-jobs-with-cron-dev-container:0.1
+    build: .
+    container_name: schedule-jobs-with-cron-dev-container
+    hostname: schedule-jobs-with-cron-dev.local
+    working_dir: /workspace
+    volumes:
+       # mount the source code into the container
+       - ..:/workspace
+       # mount any other folders into the container
+       #- ~/.aws:/home/node/.aws
+    command: sleep infinity
