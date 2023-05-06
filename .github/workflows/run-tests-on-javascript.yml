@@ -35,4 +35,4 @@ jobs:
           node-version: 14
 
       - name: Test javascript on node v14
-        run: npm run test:javascript
+        run: node --version && npm run test:javascript
