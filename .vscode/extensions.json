@@ -74,7 +74,8 @@
     "Orta.vscode-jest",
     "firsttris.vscode-jest-runner",
     "emilylilylime.vscode-test-explorer-diagnostics",
-    "DanielSanMedium.dscodegpt"
+    "DanielSanMedium.dscodegpt",
+    "GitHub.vscode-github-actions"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []
