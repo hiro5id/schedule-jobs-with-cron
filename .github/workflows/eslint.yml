@@ -33,10 +33,10 @@ jobs:
       - name: Install ESLint
         run: |
           npm install @microsoft/eslint-formatter-sarif@3.0.0
-          npm install @typescript-eslint/eslint-plugin@5.48.1
-          npm install @typescript-eslint/parser@5.48.1
+          npm install @typescript-eslint/eslint-plugin@5.59.2
+          npm install @typescript-eslint/parser@5.59.2
           npm install eslint@8.31.0
-          npm install eslint-plugin-unicorn@45.0.2
+          npm install eslint-plugin-unicorn@46.0.0
           
 
       - name: Run ESLint
